@@ -1,0 +1,55 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Bangers", system-ui;
+  overflow: hidden;
+}
+
+.canvas1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid black;
+  background: url("background1920x1080.png");
+  background-size: cover;
+  background-position: center;
+}
+.controls {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.controls button {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  color: white;
+  font: 30px Bangers;
+  border: 1px solid white;
+  margin: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px black;
+  text-shadow: 1px 1px 1px black;
+  transition: all 0.3s ease-in-out;
+}
+.controls button:hover,
+.controls button:active,
+.controls button:focus {
+  background: #7a2cba;
+  box-shadow: 4px 4px 4px black;
+  text-shadow: 4px 4px 4px black;
+}
+.assets {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .canvas1 {
+    background: url("background1080x1920.png");
+    background-size: cover;
+    background-position: center;
+  }
+}
