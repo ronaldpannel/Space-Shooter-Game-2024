@@ -32,7 +32,6 @@ class Enemy {
     return this.lives >= 1;
   }
   hit() {
-    //check for collision
     if (
       this.game.checkCollision(this, this.game.mouse) &&
       this.game.mouse.pressed &&
@@ -56,14 +55,16 @@ class Enemy {
 
       if (this.y > this.game.height) {
         this.reset();
-        if (!this.gameOver) this.game.playerLives--;
+        this.game.playerLives--;
       }
       if (!this.isAlive()) {
         if (this.game.spriteUpdate) {
           this.frameX++;
           if (this.frameX > this.lastFrame) {
             this.reset();
-            if (!this.game.gameOver) this.game.score++;
+            if (!this.game.gameOver) {
+              this.game.score++;
+            }
           }
         }
       }
@@ -76,7 +77,7 @@ class Enemy {
         this.frameX * this.spriteWidth,
         this.frameY * this.spriteHeight,
         this.spriteWidth,
-        this.spriteHeight,
+        this.spriteWidth,
         this.x,
         this.y,
         this.width,
@@ -84,8 +85,7 @@ class Enemy {
       );
       if (this.game.debug) {
         this.game.ctx.strokeRect(this.x, this.y, this.width, this.height);
-        this.game.ctx.strokeStyle = "white";
-
+        this.game.ctx.fillStyle = "white";
         this.game.ctx.fillText(
           this.lives,
           this.x + this.width * 0.5,
@@ -95,8 +95,7 @@ class Enemy {
     }
   }
 }
-
-class Beetlemorph extends Enemy {
+class BeetleMorph extends Enemy {
   constructor(game) {
     super(game);
     this.image = document.getElementById("beetlemorph");
@@ -104,7 +103,7 @@ class Beetlemorph extends Enemy {
   start() {
     super.start();
     this.speedX = 0;
-    this.speedY = Math.random() * 2 + 0.2;
+    this.speedY = Math.random() * 3 + 0.2;
     this.lives = 1;
     this.lastFrame = 3;
   }
@@ -147,17 +146,5 @@ class Lobstermorph extends Enemy {
         }
       }
     }
-  }
-}
-class Phantommorph extends Enemy {
-  constructor(game) {
-    super(game);
-    this.image = document.getElementById("phantommorph");
-    this.lastFrame = 14;
-  }
-  start() {
-    super.start();
-    this.speedX = 0;
-    this.speedY = 1;
   }
 }

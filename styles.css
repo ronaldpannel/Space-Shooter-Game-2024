@@ -43,13 +43,13 @@
   box-shadow: 4px 4px 4px black;
   text-shadow: 4px 4px 4px black;
 }
-.assets {
-  display: none;
-}
 @media screen and (max-width: 900px) {
   .canvas1 {
     background: url("background1080x1920.png");
     background-size: cover;
     background-position: center;
   }
+}
+.assets {
+  display: none;
 }
